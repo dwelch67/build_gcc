@@ -1,0 +1,5 @@
+
+rm -rf build-*
+rm -rf gcc-*
+rm -rf binutils-*
+

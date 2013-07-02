@@ -1,14 +1,14 @@
 
 
 export JN
-export JN='-j 4'
+export JN='-j 8'
 
-svn co http://llvm.org/svn/llvm-project/llvm/branches/release_32/ llvm32
-cd llvm32
+svn co http://llvm.org/svn/llvm-project/llvm/branches/release_33/ llvm33
+cd llvm33
 cd tools
-svn co http://llvm.org/svn/llvm-project/cfe/branches/release_32/ clang
+svn co http://llvm.org/svn/llvm-project/cfe/branches/release_33/ clang
 cd ..
-./configure --enable-optimized --disable-doxygen --prefix=/opt/llvm32
+./configure --enable-optimized --disable-doxygen --prefix=/opt/llvm33
 make $JN
 make install
 

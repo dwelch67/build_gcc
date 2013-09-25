@@ -1,0 +1,43 @@
+rm -rf vbcc
+rm -f vbcc.tar.gz
+wget http://www.ibaug.de/vbcc/vbcc.tar.gz
+tar xzvf vbcc.tar.gz
+cd vbcc
+mkdir bin
+#mkdir doc/vbcc.pdf
+texi2dvi --pdf doc/vbcc.texi
+make bin/vc
+echo n | make TARGET=arm bin/vbccarm
+#PATH=/path/to/vbcc/bin:$PATH
+#vbccarm -c99 -O=32767 program.c
+#vbccarm -c99 -O=32767 -thumb program.c
+cd ..
+
+rm -rf vasm
+rm -r vasm.tar.gz
+wget http://www.ibaug.de/vasm/vasm.tar.gz
+#wget http://sun.hasenbraten.de/vasm/release/vasm.tar.gz
+tar xzvf vasm.tar.gz
+cd vasm
+mkdir obj
+texi2dvi --pdf doc/vasm.texi
+make CPU=arm SYNTAX=std
+#vasmarm_std -Felf -o output.elf program.asm
+#vasmarm_std -Felf -o output.elf -thumb program.asm
+cd ..
+
+rm -rf vlink
+rm -r vlink.tar.gz
+wget http://sun.hasenbraten.de/vlink/release/vlink.tar.gz
+tar xzvf vlink.tar.gz
+cd vlink
+texi2dvi --pdf vlink.texi
+make
+cd ..
+#./vlink/vlink -b ihex -o hello.hex output.elf
+# arm-none-eabi-objcopy -I ihex -B arm hello.hex -O elf32-littlearm hello.elf
+# arm-none-eabi-objdump -D hello.elf 
+#./vlink/vlink -b rawbin1 -o hello.bin output.elf
+#./vlink/vlink -b rawbin2 -o hello.bin output.elf
+
+

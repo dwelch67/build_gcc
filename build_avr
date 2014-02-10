@@ -25,6 +25,7 @@ bzip2 -dc gcc-4.8.2.tar.bz2 | tar -xf -
 mkdir build-binutils
 cd build-binutils
 ../binutils-2.23.2/configure --target=$TARGET --prefix=$PREFIX
+echo "MAKEINFO = :" >> Makefile
 make $JN all
 make install
 

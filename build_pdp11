@@ -7,7 +7,7 @@ export TARGET=pdp11-bsd2.11
 export PREFIX=/opt/gnupdp11
 export PATH=$PATH:$PREFIX/bin
 export JN
-export JN='-j 4'
+export JN='-j 8'
 
 rm -rf build-*
 rm -rf gcc-*
@@ -25,6 +25,7 @@ bzip2 -dc gcc-4.7.3.tar.bz2 | tar -xf -
 mkdir build-binutils
 cd build-binutils
 ../binutils-2.23.2/configure --target=$TARGET --prefix=$PREFIX
+echo "MAKEINFO = :" >> Makefile
 make $JN all
 make install
 

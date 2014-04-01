@@ -3,7 +3,7 @@
 # sudo ./build_pdp11
 
 # Setup vars
-export TARGET=pdp11-bsd2.11
+export TARGET=pdp11-aout
 export PREFIX=/opt/gnupdp11
 export PATH=$PATH:$PREFIX/bin
 export JN
@@ -15,11 +15,11 @@ rm -rf binutils-*
 
 # Get archives
 wget http://ftp.gnu.org/gnu/binutils/binutils-2.23.2.tar.bz2
-wget http://ftp.gnu.org/gnu/gcc/gcc-4.7.3/gcc-4.7.3.tar.bz2
+wget http://ftp.gnu.org/gnu/gcc/gcc-4.8.2/gcc-4.8.2.tar.bz2
 
 # Extract archives
 bzip2 -dc binutils-2.23.2.tar.bz2 | tar -xf -
-bzip2 -dc gcc-4.7.3.tar.bz2 | tar -xf -
+bzip2 -dc gcc-4.8.2.tar.bz2 | tar -xf -
 
 # Build binutils
 mkdir build-binutils
@@ -32,7 +32,7 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-4.7.3/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
+../gcc-4.8.2/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
 make $JN all-gcc
 make install-gcc
 

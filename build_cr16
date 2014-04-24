@@ -7,7 +7,7 @@ export TARGET=cr16-elf
 export PREFIX=/opt/gnucr16
 export PATH=$PATH:$PREFIX/bin
 export JN
-export JN='-j 7'
+export JN='-j 8'
 
 rm -rf build-*
 rm -rf gcc-*

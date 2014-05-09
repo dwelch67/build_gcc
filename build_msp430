@@ -37,6 +37,6 @@ make $JN all-gcc
 make install-gcc
 
 # Build libgcc.a
-make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
-make install-target-libgcc
+#make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
+#make install-target-libgcc
 

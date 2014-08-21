@@ -3,6 +3,7 @@
 export JN
 export JN='-j 8'
 
+rm -rf llvm34
 svn co http://llvm.org/svn/llvm-project/llvm/branches/release_34/ llvm34
 cd llvm34
 cd tools

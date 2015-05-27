@@ -13,16 +13,16 @@ export GCCVER=5.1.0
 export BINUVER=2.25
 
 rm -rf build-*
-#rm -rf gcc-*
-#rm -rf binutils-*
+rm -rf gcc-*
+rm -rf binutils-*
 
 # Get archives
-#wget http://ftp.gnu.org/gnu/binutils/binutils-$BINUVER.tar.bz2
-#wget http://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.bz2
+wget http://ftp.gnu.org/gnu/binutils/binutils-$BINUVER.tar.bz2
+wget http://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.bz2
 
 # Extract archives
-#bzip2 -dc binutils-$BINUVER.tar.bz2 | tar -xf -
-#bzip2 -dc gcc-$GCCVER.tar.bz2 | tar -xf -
+bzip2 -dc binutils-$BINUVER.tar.bz2 | tar -xf -
+bzip2 -dc gcc-$GCCVER.tar.bz2 | tar -xf -
 
 # Build binutils
 mkdir build-binutils

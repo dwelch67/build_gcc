@@ -1,6 +1,6 @@
 
 # Usage
-# sudo ./build_arm
+# sudo ./build_msp430
 
 # Setup vars
 export TARGET=msp430

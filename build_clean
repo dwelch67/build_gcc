@@ -2,4 +2,5 @@
 rm -rf build-*
 rm -rf gcc-*
 rm -rf binutils-*
+rm -f test.o
 

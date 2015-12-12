@@ -1,6 +1,10 @@
 
-This is so I can save my gnu cross compiler build scripts for various targets.  This is how I build the compilers I am using for the other
-examples.  Also a clang/llvm script as well.  Only need one build of clang/llvm for all targets
+This is so I can save my gnu cross compiler build scripts for various
+targets.  This is how I build the compilers I am using for the other
+examples.  Also a clang/llvm script as well.
 
-these scripts were derived from a script found in the mpx project at opencores.org.
+clang/llvm only needs one build as it is by nature a cross compiler.
+
+these scripts were derived from a script found in the mpx project at
+opencores.org.
 

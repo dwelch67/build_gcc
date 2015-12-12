@@ -1,6 +1,6 @@
 
 # Usage
-# sudo ./build_arm
+# sudo ./build_arm64
 
 # Setup vars
 export TARGET=aarch64-none-elf
@@ -9,8 +9,8 @@ export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=5.1.0
-export BINUVER=2.25
+export GCCVER=5.3.0
+export BINUVER=2.25.1
 
 rm -rf build-*
 rm -rf gcc-*

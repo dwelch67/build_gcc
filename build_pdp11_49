@@ -1,16 +1,16 @@
 
 # Usage
-# sudo ./build_arm5
+# sudo ./build_pdp11
 
 # Setup vars
-export TARGET=arm-none-eabi
-export PREFIX=/opt/gnuarm5
+export TARGET=pdp11-aout
+export PREFIX=/opt/gnupdp11
 export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=5.2.0
-export BINUVER=2.25
+export GCCVER=4.8.5
+export BINUVER=2.25.1
 
 rm -rf build-*
 rm -rf gcc-*
@@ -35,7 +35,7 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c'
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
 make $JN all-gcc
 make install-gcc
 

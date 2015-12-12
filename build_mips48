@@ -1,22 +1,21 @@
 
 # Usage
-# sudo ./build_pdp11
+# sudo ./build_mips
 
 # Setup vars
-export TARGET=pdp11-aout
-export PREFIX=/opt/gnupdp11_5
+export TARGET=mips-elf
+export PREFIX=/opt/gnumips
 export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=5.2.0
-export BINUVER=2.25
+export GCCVER=4.8.5
+export BINUVER=2.25.1
 
 rm -rf build-*
 rm -rf gcc-*
 rm -rf binutils-*
 
-# Get archives
 wget http://ftp.gnu.org/gnu/binutils/binutils-$BINUVER.tar.bz2
 wget http://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.bz2
 
@@ -35,7 +34,7 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c'
 make $JN all-gcc
 make install-gcc
 

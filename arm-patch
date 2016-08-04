@@ -1,0 +1,11 @@
+--- binutils-patch/opcodes/arm-dis.c
++++ binutils-patch/opcodes/arm-dis.c
+@@ -3030,7 +3030,7 @@
+ };
+ 
+ /* Default to GCC register name set.  */
+-static unsigned int regname_selected = 1;
++static unsigned int regname_selected = 2;
+ 
+ #define NUM_ARM_REGNAMES  NUM_ELEM (regnames)
+ #define arm_regnames      regnames[regname_selected].reg_names

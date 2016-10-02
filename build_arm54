@@ -4,12 +4,12 @@
 
 # Setup vars
 export TARGET=arm-none-eabi
-export PREFIX=/opt/gnuarm53
+export PREFIX=/opt/gnuarm54
 export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=5.3.0
+export GCCVER=5.4.0
 export BINUVER=2.27
 
 rm -rf build-*

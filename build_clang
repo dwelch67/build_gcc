@@ -1,17 +1,15 @@
 
+rm -rf build-*
+rm -rf llvm39
 
-export JN
-export JN='-j 8'
-
-rm -rf llvm38
-svn co http://llvm.org/svn/llvm-project/llvm/branches/release_38/ llvm38
-cd llvm38
+svn co http://llvm.org/svn/llvm-project/llvm/branches/release_39/ llvm39
+cd llvm39
 cd tools
-svn co http://llvm.org/svn/llvm-project/cfe/branches/release_38/ clang
+svn co http://llvm.org/svn/llvm-project/cfe/branches/release_39/ clang
 cd ..
-mkdir build
-cd build
-../configure --enable-optimized --disable-doxygen --prefix=/opt/llvm38
-make $JN
+cd ..
+mkdir build-clang
+cd build-clang
+cmake -DCMAKE_INSTALL_PREFIX=/opt/llvm39 -DLLVM_OPTIMIZED_TABLEGEN=ON ../llvm39/
+make
 make install
-

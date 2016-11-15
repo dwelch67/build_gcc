@@ -1,0 +1,17 @@
+
+
+export JN
+export JN='-j 8'
+
+rm -rf llvm37
+svn co http://llvm.org/svn/llvm-project/llvm/branches/release_37/ llvm37
+cd llvm37
+cd tools
+svn co http://llvm.org/svn/llvm-project/cfe/branches/release_37/ clang
+cd ..
+mkdir build
+cd build
+../configure --enable-optimized --disable-doxygen --prefix=/opt/llvm37
+make $JN
+make install
+

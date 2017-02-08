@@ -24,6 +24,10 @@ wget http://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.bz2
 bzip2 -dc binutils-$BINUVER.tar.bz2 | tar -xf -
 bzip2 -dc gcc-$GCCVER.tar.bz2 | tar -xf -
 
+# may have to touch this from time to time
+ln -s binutils-$BINUVER binutils-patch
+patch -p0 < mips-patch
+
 # Build binutils
 mkdir build-binutils
 cd build-binutils

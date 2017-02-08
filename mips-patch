@@ -1,0 +1,33 @@
+--- binutils-patch/opcodes/mips-dis.c
++++ binutils-patch/opcodes/mips-dis.c
+@@ -426,9 +426,9 @@
+ struct mips_abi_choice mips_abi_choices[] =
+ {
+   { "numeric", mips_gpr_names_numeric, mips_fpr_names_numeric },
+-  { "32", mips_gpr_names_oldabi, mips_fpr_names_32 },
+-  { "n32", mips_gpr_names_newabi, mips_fpr_names_n32 },
+-  { "64", mips_gpr_names_newabi, mips_fpr_names_64 },
++  { "32", mips_gpr_names_numeric, mips_fpr_names_numeric },
++  { "n32", mips_gpr_names_numeric, mips_fpr_names_numeric },
++  { "64", mips_gpr_names_numeric, mips_fpr_names_numeric },
+ };
+ 
+ struct mips_arch_choice
+@@ -776,7 +776,7 @@
+   mips_processor = CPU_R3000;
+   micromips_ase = 0;
+   mips_ase = 0;
+-  mips_gpr_names = mips_gpr_names_oldabi;
++  mips_gpr_names = mips_gpr_names_numeric;
+   mips_fpr_names = mips_fpr_names_numeric;
+   mips_cp0_names = mips_cp0_names_numeric;
+   mips_cp0sel_names = NULL;
+@@ -793,7 +793,7 @@
+       header = elf_elfheader (info->section->owner);
+       /* If an ELF "newabi" binary, use the n32/(n)64 GPR names.  */
+       if (is_newabi (header))
+-	mips_gpr_names = mips_gpr_names_newabi;
++	mips_gpr_names = mips_gpr_names_numeric;
+       /* If a microMIPS binary, then don't use MIPS16 bindings.  */
+       micromips_ase = is_micromips (header);
+     }

@@ -9,8 +9,8 @@ export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=6.2.0
-export BINUVER=2.27
+export GCCVER=6.3.0
+export BINUVER=2.28
 
 rm -rf build-*
 rm -rf gcc-*

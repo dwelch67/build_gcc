@@ -1,10 +1,10 @@
 
 # Usage
-# sudo ./build_pdp11
+# sudo ./build_arm
 
 # Setup vars
-export TARGET=pdp11-aout
-export PREFIX=/opt/gnupdp11
+export TARGET=xtensa-esp8266-elf
+export PREFIX=/opt/gnuesp8266
 export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
@@ -24,6 +24,10 @@ wget http://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.bz2
 bzip2 -dc binutils-$BINUVER.tar.bz2 | tar -xf -
 bzip2 -dc gcc-$GCCVER.tar.bz2 | tar -xf -
 
+# may have to touch this from time to time
+ln -s binutils-$BINUVER binutils-patch
+patch -p0 < arm-patch
+
 # Build binutils
 mkdir build-binutils
 cd build-binutils
@@ -35,11 +39,11 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c'
 make $JN all-gcc
 make install-gcc
 
 # Build libgcc.a
-make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
-make install-target-libgcc
+#make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
+#make install-target-libgcc
 

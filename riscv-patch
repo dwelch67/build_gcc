@@ -1,0 +1,13 @@
+--- binutils-patch/opcodes/riscv-dis.c
++++ binutils-patch/opcodes/riscv-dis.c
+@@ -47,8 +47,8 @@
+ static void
+ set_default_riscv_dis_options (void)
+ {
+-  riscv_gpr_names = riscv_gpr_names_abi;
+-  riscv_fpr_names = riscv_fpr_names_abi;
++  riscv_gpr_names = riscv_gpr_names_numeric;
++  riscv_fpr_names = riscv_fpr_names_numeric;
+   no_aliases = 0;
+ }
+

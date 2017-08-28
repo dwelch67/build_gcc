@@ -9,20 +9,20 @@ export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=6.3.0
-export BINUVER=2.28
+export GCCVER=7.2.0
+export BINUVER=2.28.1
 
 rm -rf build-*
 rm -rf gcc-*
 rm -rf binutils-*
 
 # Get archives
-wget http://ftp.gnu.org/gnu/binutils/binutils-$BINUVER.tar.bz2
-wget http://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.bz2
+wget https://ftp.gnu.org/gnu/binutils/binutils-$BINUVER.tar.gz
+wget https://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.gz
 
 # Extract archives
-bzip2 -dc binutils-$BINUVER.tar.bz2 | tar -xf -
-bzip2 -dc gcc-$GCCVER.tar.bz2 | tar -xf -
+tar xf binutils-$BINUVER.tar.gz
+tar xf gcc-$GCCVER.tar.gz
 
 # Build binutils
 mkdir build-binutils

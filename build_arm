@@ -9,8 +9,8 @@ export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
-export GCCVER=8.2.0
-export BINUVER=2.31.1
+export GCCVER=8.3.0
+export BINUVER=2.32
 
 rm -rf build-*
 rm -rf gcc-*
@@ -39,7 +39,7 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c'
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-frame-pointer=no
 make $JN all-gcc
 make install-gcc
 

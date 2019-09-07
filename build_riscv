@@ -6,10 +6,9 @@
 export TARGET=riscv32-none-elf
 export PREFIX=/opt/gnuriscv32
 export PATH=$PATH:$PREFIX/bin
-export JN
 export JN='-j 8'
 
-export GCCVER=9.1.0
+export GCCVER=9.2.0
 export BINUVER=2.32
 
 rm -rf build-*
@@ -39,11 +38,11 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c'
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
 make $JN all-gcc
 make install-gcc
 
 # Build libgcc.a
-#make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
-#make install-target-libgcc
+make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
+make install-target-libgcc
 

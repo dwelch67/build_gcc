@@ -6,10 +6,9 @@
 export TARGET=pdp11-aout
 export PREFIX=/opt/gnupdp11
 export PATH=$PATH:$PREFIX/bin
-export JN
 export JN='-j 8'
 
-export GCCVER=9.1.0
+export GCCVER=9.2.0
 export BINUVER=2.32
 
 rm -rf build-*

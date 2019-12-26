@@ -4,12 +4,12 @@
 
 # Setup vars
 export TARGET=aarch64-none-elf
-export PREFIX=/opt/gnuaarc64
+export PREFIX=/opt/gnuaarch64
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
 export GCCVER=9.2.0
-export BINUVER=2.32
+export BINUVER=2.33.1
 
 rm -rf build-*
 rm -rf gcc-*

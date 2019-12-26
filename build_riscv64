@@ -1,10 +1,10 @@
 
 # Usage
-# sudo ./build_arm
+# sudo ./build_riscv64
 
 # Setup vars
-export TARGET=arm-none-eabi
-export PREFIX=/opt/gnuarm
+export TARGET=riscv64-unknown-elf
+export PREFIX=/opt/gnuriscv64
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
@@ -25,7 +25,7 @@ tar xf gcc-$GCCVER.tar.gz
 
 # may have to touch this from time to time
 ln -s binutils-$BINUVER binutils-patch
-patch -p0 < arm-patch
+patch -p0 < riscv-patch
 
 # Build binutils
 mkdir build-binutils
@@ -38,7 +38,7 @@ make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-frame-pointer=no
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
 make $JN all-gcc
 make install-gcc
 

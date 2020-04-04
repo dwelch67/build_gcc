@@ -8,7 +8,7 @@ export PREFIX=/opt/gnuriscv64
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=9.2.0
+export GCCVER=9.3.0
 export BINUVER=2.34
 
 rm -rf build-*

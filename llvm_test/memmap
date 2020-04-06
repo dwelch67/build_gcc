@@ -7,6 +7,9 @@ MEMORY
 
 SECTIONS
 {
+    /DISCARD/ : {
+        *(.ARM.exidx*)
+    }
     .text : { *(.text*) } > rom
     .rodata : { *(.rodata*) } > rom
     .bss : { *(.bss*) } > ram

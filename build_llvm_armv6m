@@ -1,0 +1,13 @@
+
+rm -rf /opt/llvm/llvm10armv6m
+rm -rf llvm-project
+git clone https://github.com/llvm/llvm-project.git
+cd llvm-project
+git checkout llvmorg-10.0.0
+mkdir build
+cd build
+cmake -DLLVM_ENABLE_PROJECTS='clang;lld' -DCMAKE_CROSSCOMPILING=True -DCMAKE_INSTALL_PREFIX=/opt/llvm/llvm10armv6m -DLLVM_DEFAULT_TARGET_TRIPLE=armv6m-none-eabi -DLLVM_TARGET_ARCH=ARM -DLLVM_TARGETS_TO_BUILD=ARM -G "Unix Makefiles" ../llvm
+make -j 8
+make -j 4
+make
+sudo make install

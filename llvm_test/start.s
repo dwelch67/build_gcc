@@ -1,6 +1,8 @@
 
-.thumb
+.text
+/*.syntax unified*/
 .cpu    cortex-m0
+.code   16
 .globl _start
 _start:
 .word 0x20001000

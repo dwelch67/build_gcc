@@ -1,6 +1,6 @@
 
-export THEPLACE=/opt/llvm/llvm10armv6m
-export THETARGET=armv6m-none-eabi
+export THEPLACE=/opt/llvm/llvm10armv4t
+export THETARGET=armv4t-none-eabi
 
 rm -rf $THEPLACE
 rm -rf llvm-project
@@ -20,7 +20,8 @@ cmake \
 -G "Unix Makefiles" \
 ../llvm
 
-#make -j 8
+make -j 8
 make -j 4
-#make
-#sudo make install
+make
+sudo make install
+

@@ -8,8 +8,8 @@ export PREFIX=/opt/gnuaarch64
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=10.1.0
-export BINUVER=2.34
+export GCCVER=10.2.0
+export BINUVER=2.35
 
 rm -rf build-*
 rm -rf gcc-*

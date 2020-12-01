@@ -2,6 +2,10 @@
 # Usage
 # sudo ./build_arm
 
+# install gnat
+# https://www.adacore.com/download
+
+
 # Setup vars
 export TARGET=arm-none-eabi
 export PREFIX=/opt/gnuarm
@@ -9,7 +13,7 @@ export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
 export GCCVER=10.2.0
-export BINUVER=2.35
+export BINUVER=2.35.1
 
 rm -rf build-*
 rm -rf gcc-*

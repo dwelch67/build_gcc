@@ -1,12 +1,12 @@
 
-export THEPLACE=/opt/llvm/llvm10armv6m
+export THEPLACE=/opt/llvm11armv6m
 export THETARGET=armv6m-none-eabi
 
 rm -rf $THEPLACE
 rm -rf llvm-project
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-10.0.0
+git checkout llvmorg-11.0.0
 mkdir build
 cd build
 cmake \
@@ -20,7 +20,7 @@ cmake \
 -G "Unix Makefiles" \
 ../llvm
 
-#make -j 8
+make -j 8
 make -j 4
-#make
+make
 #sudo make install

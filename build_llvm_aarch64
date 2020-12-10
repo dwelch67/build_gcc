@@ -1,0 +1,28 @@
+
+export THEPLACE=/opt/llvm11aarch64
+export THETARGET=aarch64-none-eabi
+#--target=aarch64-none-eabi
+
+rm -rf $THEPLACE
+rm -rf llvm-project
+git clone https://github.com/llvm/llvm-project.git
+cd llvm-project
+git checkout llvmorg-11.0.0
+mkdir build
+cd build
+cmake \
+-DLLVM_ENABLE_PROJECTS='clang;lld' \
+-DCMAKE_BUILD_TYPE=Release \
+-DCMAKE_CROSSCOMPILING=True \
+-DCMAKE_INSTALL_PREFIX=$THEPLACE \
+-DLLVM_DEFAULT_TARGET_TRIPLE=$THETARGET \
+-DLLVM_TARGET_ARCH=AArch64 \
+-DLLVM_TARGETS_TO_BUILD=AArch64 \
+-G "Unix Makefiles" \
+../llvm
+
+make -j 8
+make -j 4
+make
+sudo make install
+

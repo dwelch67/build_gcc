@@ -1,6 +1,6 @@
 
 # Usage
-# sudo ./build_arm
+# sudo ./build_arm5
 
 # Setup vars
 export TARGET=arm-none-eabi
@@ -8,8 +8,8 @@ export PREFIX=/opt/gnuarm5
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=5.4.0
-export BINUVER=2.34
+export GCCVER=5.5.0
+export BINUVER=2.35.1
 
 rm -rf build-*
 rm -rf gcc-*

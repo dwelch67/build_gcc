@@ -1,12 +1,13 @@
 
-export THEPLACE=/opt/llvm11armv7m
-export THETARGET=armv7m-none-eabi
+export THEPLACE=/opt/llvm11riscv
+#export THETARGET=riscv-none-elf
+export THETARGET=riscv32-unknown-elf
 
 rm -rf $THEPLACE
 rm -rf llvm-project
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-11.1.0
+git checkout llvmorg-11.0.1
 mkdir build
 cd build
 cmake \
@@ -15,8 +16,7 @@ cmake \
 -DCMAKE_CROSSCOMPILING=True \
 -DCMAKE_INSTALL_PREFIX=$THEPLACE \
 -DLLVM_DEFAULT_TARGET_TRIPLE=$THETARGET \
--DLLVM_TARGET_ARCH=ARM \
--DLLVM_TARGETS_TO_BUILD=ARM \
+-DLLVM_TARGETS_TO_BUILD=RISCV \
 -G "Unix Makefiles" \
 ../llvm
 
@@ -24,3 +24,4 @@ make -j 8
 make -j 4
 make
 sudo make install
+

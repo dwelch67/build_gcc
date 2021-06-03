@@ -4,11 +4,11 @@
 
 # Setup vars
 export TARGET=riscv32-none-elf
-export PREFIX=/opt/gnuriscv32
+export PREFIX=/home/dwelch/gnuriscv32
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=10.2.0
+export GCCVER=11.1.0
 export BINUVER=2.36.1
 
 rm -rf build-*

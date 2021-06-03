@@ -8,7 +8,7 @@ export PREFIX=/opt/gnumoxie
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=10.2.0
+export GCCVER=11.1.0
 export BINUVER=2.36.1
 
 rm -rf build-*

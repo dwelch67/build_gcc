@@ -1,0 +1,48 @@
+
+# Usage
+# sudo ./build_arm
+
+# Setup vars
+export TARGET=arm-none-eabi
+export PREFIX=/opt/gnuarm9
+export PATH=$PATH:$PREFIX/bin
+export JN='-j 8'
+
+export GCCVER=9.4.0
+export BINUVER=2.36.1
+
+rm -rf build-*
+rm -rf gcc-*
+rm -rf binutils-*
+
+# Get archives
+wget https://ftp.gnu.org/gnu/binutils/binutils-$BINUVER.tar.gz
+wget https://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.gz
+
+# Extract archives
+tar xf binutils-$BINUVER.tar.gz
+tar xf gcc-$GCCVER.tar.gz
+
+# may have to touch this from time to time
+ln -s binutils-$BINUVER binutils-patch
+patch -p0 < arm-patch
+
+# Build binutils
+mkdir build-binutils
+cd build-binutils
+../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX
+echo "MAKEINFO = :" >> Makefile
+make $JN all
+sudo make install
+
+# Build GCC
+mkdir ../build-gcc
+cd ../build-gcc
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-frame-pointer=no
+make $JN all-gcc
+sudo make install-gcc
+
+# Build libgcc.a
+make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"
+sudo make install-target-libgcc
+

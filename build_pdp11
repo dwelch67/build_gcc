@@ -8,8 +8,8 @@ export PREFIX=/opt/gnupdp11
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=11.1.0
-export BINUVER=2.36.1
+export GCCVER=11.2.0
+export BINUVER=2.37
 
 rm -rf build-*
 rm -rf gcc-*

@@ -1,13 +1,13 @@
 
-export THEPLACE=/opt/llvm12riscv
+export THEPLACE=/opt/llvm/llvm15riscv
 #export THETARGET=riscv-none-elf
-export THETARGET=riscv32-unknown-elf
+export THETARGET=riscv64-unknown-elf
 
 rm -rf $THEPLACE
 rm -rf llvm-project
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-12.0.0
+git checkout llvmorg-15.0.1
 mkdir build
 cd build
 cmake \

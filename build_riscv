@@ -4,12 +4,12 @@
 
 # Setup vars
 export TARGET=riscv32-none-elf
-export PREFIX=/home/dwelch/gnuriscv32
+export PREFIX=/opt/gnu/riscv32
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=11.2.0
-export BINUVER=2.37
+export GCCVER=12.2.0
+export BINUVER=2.39
 
 rm -rf build-*
 rm -rf gcc-*
@@ -23,14 +23,10 @@ wget https://ftp.gnu.org/gnu/gcc/gcc-$GCCVER/gcc-$GCCVER.tar.gz
 tar xf binutils-$BINUVER.tar.gz
 tar xf gcc-$GCCVER.tar.gz
 
-# may have to touch this from time to time
-ln -s binutils-$BINUVER binutils-patch
-patch -p0 < riscv-patch
-
 # Build binutils
 mkdir build-binutils
 cd build-binutils
-../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX
+../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX --with-abi=ilp32
 echo "MAKEINFO = :" >> Makefile
 make $JN all
 sudo make install
@@ -38,7 +34,7 @@ sudo make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --with-abi=ilp32 --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
 make $JN all-gcc
 sudo make install-gcc
 

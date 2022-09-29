@@ -1,10 +1,10 @@
 
 # Usage
-# sudo ./build_pdp11
+# sudo ./build_riscv32
 
 # Setup vars
-export TARGET=pdp11-aout
-export PREFIX=/opt/gnu/pdp11
+export TARGET=riscv64-unknown-elf
+export PREFIX=/opt/gnu/riscv64
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
@@ -26,7 +26,7 @@ tar xf gcc-$GCCVER.tar.gz
 # Build binutils
 mkdir build-binutils
 cd build-binutils
-../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX
+../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX --with-abi=lp64
 echo "MAKEINFO = :" >> Makefile
 make $JN all
 sudo make install
@@ -34,7 +34,7 @@ sudo make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --with-abi=lp64 --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
 make $JN all-gcc
 sudo make install-gcc
 

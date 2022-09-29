@@ -1,13 +1,13 @@
 
-export THEPLACE=/opt/llvm12aarch64
-export THETARGET=aarch64-none-eabi
-#--target=aarch64-none-eabi
+export THEPLACE=/opt/llvm/llvm15riscv
+#export THETARGET=riscv-none-elf
+export THETARGET=riscv32-unknown-elf
 
 rm -rf $THEPLACE
 rm -rf llvm-project
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-12.0.1
+git checkout llvmorg-15.0.1
 mkdir build
 cd build
 cmake \
@@ -16,8 +16,7 @@ cmake \
 -DCMAKE_CROSSCOMPILING=True \
 -DCMAKE_INSTALL_PREFIX=$THEPLACE \
 -DLLVM_DEFAULT_TARGET_TRIPLE=$THETARGET \
--DLLVM_TARGET_ARCH=AArch64 \
--DLLVM_TARGETS_TO_BUILD=AArch64 \
+-DLLVM_TARGETS_TO_BUILD=RISCV \
 -G "Unix Makefiles" \
 ../llvm
 

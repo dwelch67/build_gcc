@@ -4,12 +4,12 @@
 
 # Setup vars
 export TARGET=mips-elf
-export PREFIX=/opt/gnumips
+export PREFIX=/opt/gnu/mips
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
-export GCCVER=11.2.0
-export BINUVER=2.37
+export GCCVER=12.2.0
+export BINUVER=2.39
 
 rm -rf build-*
 rm -rf gcc-*

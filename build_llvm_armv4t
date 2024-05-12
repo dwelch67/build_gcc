@@ -1,12 +1,12 @@
 
-export THEPLACE=/opt/llvm/llvm15armv4t
+export THEPLACE=/opt/llvm/armv4t
 export THETARGET=armv4t-none-eabi
 
 rm -rf $THEPLACE
 rm -rf llvm-project
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-15.0.1
+git checkout llvmorg-16.0.1
 mkdir build
 cd build
 cmake \

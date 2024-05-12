@@ -6,10 +6,12 @@
 export TARGET=riscv64-unknown-elf
 export PREFIX=/opt/gnu/riscv64
 export PATH=$PATH:$PREFIX/bin
-export JN='-j 8'
+export JN='-j 16'
 
-export GCCVER=12.2.0
-export BINUVER=2.39
+sudo mkdir -p $PREFIX
+
+export GCCVER=14.1.0
+export BINUVER=2.42
 
 rm -rf build-*
 rm -rf gcc-*
@@ -26,7 +28,7 @@ tar xf gcc-$GCCVER.tar.gz
 # Build binutils
 mkdir build-binutils
 cd build-binutils
-../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX --with-abi=lp64
+../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX
 echo "MAKEINFO = :" >> Makefile
 make $JN all
 sudo make install
@@ -34,7 +36,7 @@ sudo make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --with-abi=lp64 --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
 make $JN all-gcc
 sudo make install-gcc
 

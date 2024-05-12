@@ -9,10 +9,14 @@ export PATH=$PATH:$PREFIX/bin
 export JN
 export JN='-j 8'
 
+sudo mkdir -p $PREFIX
+
 #export GCCVER=7.2.0
 #export BINUVER=2.29.1
-export GCCVER=12.2.0
-export BINUVER=2.39
+#export GCCVER=12.2.0
+#export BINUVER=2.39
+export GCCVER=14.1.0
+export BINUVER=2.42
 
 rm -rf build-*
 rm -rf gcc-*
@@ -32,14 +36,14 @@ cd build-binutils
 ../binutils-$BINUVER/configure --target=$TARGET --prefix=$PREFIX --disable-werror
 echo "MAKEINFO = :" >> Makefile
 make $JN all
-make install
+sudo make install
 
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
 ../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c'
 make $JN all-gcc
-make install-gcc
+sudo make install-gcc
 
 # Build libgcc.a
 #make $JN all-target-libgcc CFLAGS_FOR_TARGET="-g -O2"

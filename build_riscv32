@@ -1,10 +1,10 @@
 
 # Usage
-# sudo ./build_pdp11
+# sudo ./build_riscv32
 
 # Setup vars
-export TARGET=pdp11-aout
-export PREFIX=/opt/gnu/pdp11
+export TARGET=riscv32-none-elf
+export PREFIX=/opt/gnu/riscv32
 export PATH=$PATH:$PREFIX/bin
 export JN='-j 8'
 
@@ -36,7 +36,7 @@ sudo make install
 # Build GCC
 mkdir ../build-gcc
 cd ../build-gcc
-../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld
+../gcc-$GCCVER/configure --target=$TARGET --prefix=$PREFIX --without-headers --with-newlib  --with-gnu-as --with-gnu-ld --enable-languages='c' --enable-multilib
 make $JN all-gcc
 sudo make install-gcc
 

@@ -6,10 +6,12 @@
 export TARGET=aarch64-none-elf
 export PREFIX=/opt/gnu/aarch64
 export PATH=$PATH:$PREFIX/bin
-export JN='-j 8'
+export JN='-j 16'
 
-export GCCVER=12.2.0
-export BINUVER=2.39
+sudo mkdir -p $PREFIX
+
+export GCCVER=14.1.0
+export BINUVER=2.42
 
 rm -rf build-*
 rm -rf gcc-*

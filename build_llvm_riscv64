@@ -3,9 +3,9 @@
 
 #export LLREV=15.0.7
 #export LLREV=16.0.4
-export LLREV=17.0.6
+#export LLREV=17.0.6
+export LLREV=18.1.5
 
-#export THEPLACE=/work/llvm/riscv64.$LLREV
 export THEPLACE=/opt/llvm/riscv64
 export THETARGET=riscv64-unknown-elf
 

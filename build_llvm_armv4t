@@ -1,12 +1,17 @@
 
+
+export LLREV=18.1.5
+
 export THEPLACE=/opt/llvm/armv4t
 export THETARGET=armv4t-none-eabi
 
-rm -rf $THEPLACE
+sudo mkdir -p /opt/llvm
 rm -rf llvm-project
+rm -rf $THEPLACE
+
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-16.0.1
+git checkout llvmorg-$LLREV
 mkdir build
 cd build
 cmake \
@@ -20,8 +25,8 @@ cmake \
 -G "Unix Makefiles" \
 ../llvm
 
+make -j 16
 make -j 8
 make -j 4
 make
 sudo make install
-

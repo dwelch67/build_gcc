@@ -1,14 +1,17 @@
 
+
+export LLREV=18.1.5
+
 export THEPLACE=/opt/llvm/aarch64
 export THETARGET=aarch64-none-eabi
 
 sudo mkdir -p /opt/llvm
-
-rm -rf $THEPLACE
 rm -rf llvm-project
+rm -rf $THEPLACE
+
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-16.0.6
+git checkout llvmorg-$LLREV
 mkdir build
 cd build
 cmake \

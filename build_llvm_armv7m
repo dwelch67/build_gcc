@@ -1,12 +1,17 @@
 
-export THEPLACE=/opt/llvm/llvm15armv7m
+
+export LLREV=18.1.5
+
+export THEPLACE=/opt/llvm/armv7m
 export THETARGET=armv7m-none-eabi
 
+sudo mkdir -p /opt/llvm
 rm -rf $THEPLACE
 rm -rf llvm-project
+
 git clone https://github.com/llvm/llvm-project.git
 cd llvm-project
-git checkout llvmorg-15.0.1
+git checkout llvmorg-$LLREV
 mkdir build
 cd build
 cmake \
@@ -20,6 +25,7 @@ cmake \
 -G "Unix Makefiles" \
 ../llvm
 
+make -j 16
 make -j 8
 make -j 4
 make
